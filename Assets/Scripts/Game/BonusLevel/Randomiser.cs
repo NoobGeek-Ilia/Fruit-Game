@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class Randomiser
 {
+    internal protected int[] GetFruitIndex { get => fruitArray; }
+
     private const int maxCardNum = 9;
     private int[] fruitArray = new int[maxCardNum];
-    internal protected int[] GetFruitIndex { get => fruitArray; }
 
     public Randomiser()
     {
         SetIndexForEachCard();
     }
 
-    void SetIndexForEachCard()
+    private void SetIndexForEachCard()
     {
-        // —оздаем список, содержащий числа от 0 до 2 по три раза каждое
+        // создать
         List<int> numbers = new List<int>();
         for (int num = 0; num <= 2; num++)
         {
@@ -24,7 +25,7 @@ public class Randomiser
             }
         }
 
-        // ѕеремешиваем список
+        // перемешать
         for (int i = 0; i < numbers.Count; i++)
         {
             int temp = numbers[i];
@@ -33,11 +34,10 @@ public class Randomiser
             numbers[randomIndex] = temp;
         }
 
-        // «аполн€ем массив случайными числами
+        // заполнить
         for (int i = 0; i < fruitArray.Length; i++)
         {
             fruitArray[i] = numbers[i];
-            Debug.Log(fruitArray[i]);  // ћожете удалить эту строку, она нужна дл€ отладки
         }
     }
 }

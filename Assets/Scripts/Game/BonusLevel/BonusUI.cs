@@ -7,7 +7,8 @@ public class BonusUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _coinsSumTxt;
     [SerializeField] private BonusLevelManager _bonusLevelManager;
     [SerializeField] private GameObject _homeButton;
-    int _coinsSum = 0;
+
+    private int _coinsSum = 0;
 
     private void Start()
     {

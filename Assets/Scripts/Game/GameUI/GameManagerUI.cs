@@ -5,7 +5,6 @@ public class GameManagerUI : MonoBehaviour
 {
     [SerializeField] private BasketController _basketController;
     [SerializeField] private StartTimer _startTimer;
-
     [SerializeField] private TextMeshProUGUI _levelMonitor;
     [SerializeField] private TextMeshProUGUI _TimerMonitor;
     [SerializeField] private TextMeshProUGUI _FruitNum;

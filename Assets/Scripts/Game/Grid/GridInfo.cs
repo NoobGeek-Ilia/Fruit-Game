@@ -8,11 +8,6 @@ public class GridInfo
     public float GetGridMin_z { get => GetTilePos(0).z; }
     public float GetGridMax_z { get => GetTilePos(_tileContainer.Count - 1).z; }
 
-    private readonly GameObject _tile;
-    private readonly int _width;
-    private readonly int _height;
-
-    private List<GameObject> _tileContainer = new List<GameObject>();
     public int GetTileNum { get => _tileContainer.Count; }
     public int GetGridWidth { get => _width; }
     public int GetGridHeight { get => _height; }
@@ -25,4 +20,10 @@ public class GridInfo
     }
     public void FillTileContainer(GameObject tile) => _tileContainer.Add(tile);
     public Vector3 GetTilePos(int index) => _tileContainer[index].transform.position;
+
+    private readonly GameObject _tile;
+    private readonly int _width;
+    private readonly int _height;
+
+    private List<GameObject> _tileContainer = new List<GameObject>();
 }

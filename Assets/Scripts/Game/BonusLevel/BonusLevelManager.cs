@@ -8,19 +8,20 @@ using UnityEngine.UI;
 public class BonusLevelManager : MonoBehaviour
 {
     public Action GetBonus;
+
     [SerializeField] TextMeshProUGUI allCoinsTxt;
     [SerializeField] GameObject losePanel;
     [SerializeField] Button[] buttons;
     [SerializeField] Sprite[] sprites;
-    private Randomiser randomiser;
-    List<int> sameFruitSum = new List<int>();
 
-    private const int _coinsDefValue = 100;
-    private const int _bonusDefValue = 50;
     internal protected int _coins;
     internal protected int _bonus;
 
-    private bool[] buttonClicked; // Массив для отслеживания состояния каждой кнопки
+    private Randomiser randomiser;
+    private List<int> sameFruitSum = new List<int>();
+    private const int _coinsDefValue = 100;
+    private const int _bonusDefValue = 50;
+    private bool[] buttonClicked;
 
     private void Awake()
     {
@@ -36,8 +37,8 @@ public class BonusLevelManager : MonoBehaviour
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            int levelIndex = i; // Создаем локальную переменную
-            buttons[i].onClick.AddListener(() => OnButtonClick(levelIndex)); // Используем локальную переменную
+            int levelIndex = i;
+            buttons[i].onClick.AddListener(() => OnButtonClick(levelIndex));
         }
     }
 
@@ -77,7 +78,7 @@ public class BonusLevelManager : MonoBehaviour
     private void Lose()
     {
         losePanel.SetActive(true);
-        allCoinsTxt.text = $"Received {_coins}$";
+        allCoinsTxt.text = $"Получено {_coins}$";
         Wallet.AddCoins(_coins);
     }
 

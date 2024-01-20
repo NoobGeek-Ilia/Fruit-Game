@@ -5,8 +5,8 @@ public class Init : MonoBehaviour
     [SerializeField] private Transform _player;
     [SerializeField] private FruitInit _fruitInit;
     [SerializeField] private Timer _timer;
-    private int _playerTileReserve;
 
+    private int _playerTileReserve;
     private int _maxTime;
 
     private void Start()

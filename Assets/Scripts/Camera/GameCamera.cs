@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameCamera : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         float distanceStep = 1.5f;
         float cameraSize = GetComponent<Camera>().orthographicSize;

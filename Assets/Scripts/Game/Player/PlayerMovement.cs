@@ -46,18 +46,11 @@ public class PlayerMovement : MonoBehaviour
     void PlayerMove()
     {
         Vector3 targetPosition = transform.position + direction;
-
-        // Ограничение в пределах сетки
         targetPosition.x = Mathf.Clamp(targetPosition.x, GridGenerator.GridInfo.GetGridMin_x, GridGenerator.GridInfo.GetGridMax_x);
         targetPosition.z = Mathf.Clamp(targetPosition.z, GridGenerator.GridInfo.GetGridMin_z, GridGenerator.GridInfo.GetGridMax_z);
-
-        // Сохраняем уровень y
         targetPosition.y = transform.position.y;
-
-        // Плавное перемещение к целевой позиции
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
-        // Поворот объекта в соответствии с направлением движения
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);

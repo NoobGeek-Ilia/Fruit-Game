@@ -5,12 +5,14 @@ using UnityEngine.UI;
 public class BasketController : MonoBehaviour
 {
     [SerializeField] private Button[] buttons;
-    public static int selectedButtonIndex = 0;
-    
-    private int _colectedFruitsNum;
+
     public int GetCurrentFruitNum { get => _colectedFruitsNum; }
+    public static int selectedButtonIndex;
     public int MaxFruitNum;
+
     internal protected static Action BasketIsFull;
+
+    private int _colectedFruitsNum;
 
     private void Awake()
     {
@@ -31,8 +33,6 @@ public class BasketController : MonoBehaviour
         foreach (Button button in buttons)
             button.image.color = Color.blue;
         buttons[buttonIndex].image.color = Color.green;
-
-        // Обновляем индекс выбранной кнопки
         selectedButtonIndex = buttonIndex;
     }
     public void AddFruitInBasket()

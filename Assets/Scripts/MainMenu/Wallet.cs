@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
-    private static int coinValue;
-
     internal protected static int CoinValue { get { return coinValue; } set { coinValue = value; } }
+
+    private static int coinValue;
 
     private void Awake()
     {

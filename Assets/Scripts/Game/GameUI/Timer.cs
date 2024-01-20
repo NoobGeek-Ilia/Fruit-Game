@@ -2,17 +2,26 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] StartTimer startTimer;
     [SerializeField] TextMeshProUGUI timerText;
-    private static int _time;
+
     public static int TimeValue { get => _time; private set => _time = value; }
+
+    internal protected Action TimeIsUp;
+
+    private static int _time;
+    
     private void OnEnable()
     {
         startTimer.TimeIsUp += () => StartCoroutine(TimerCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        startTimer.TimeIsUp -= () => StartCoroutine(TimerCoroutine());
     }
 
     public static string GetFormatedTime
@@ -24,8 +33,6 @@ public class Timer : MonoBehaviour
             return $"{minutes:0}:{seconds:00}";
         }
     }
-
-    internal protected Action TimeIsUp;
 
     public void SetTimer(int time)
     {
@@ -41,12 +48,8 @@ public class Timer : MonoBehaviour
             TimeValue--;
             UpdateTimerText();
 
-            // Проверка на оставшееся время менее 5 секунд
             if (TimeValue <= 5)
-            {
-                // Устанавливаем красный цвет текста
                 timerText.color = Color.red;
-            }
         }
         TimeIsUp?.Invoke();
     }

@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour
         _playerColliderController.WrongFruitColeded += OpenGameOverPanel;
     }
 
+    private void OnDisable()
+    {
+        BasketController.BasketIsFull -= OpenWinPanel;
+        timer.TimeIsUp -= OpenGameOverPanel;
+        _playerColliderController.WrongFruitColeded -= OpenGameOverPanel;
+    }
+
     private void OpenWinPanel()
     {
         SceneManager.LoadScene("Bonus");
